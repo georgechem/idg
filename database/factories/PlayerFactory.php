@@ -34,7 +34,7 @@ class PlayerFactory extends Factory
         $names = explode(' ', $user->getName(), 2);
         $users = User::all();
 
-        if(count(self::$userIds) === 0){
+        if(empty(self::$userIds)){
             self::$userIds = array_map(function($user){
                 return $user['id'];
             }, $users->toArray());

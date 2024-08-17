@@ -4,16 +4,19 @@ namespace Database\Seeders;
 
 use App\Models\Game;
 use App\Models\Player;
+use Exception;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class GamePlayerSeeder extends Seeder
 {
+    private const REQUIRED_PLAYERS = 2;
     /**
      * Run the database seeds.
      *
      * @return void
+     * @throws Exception
      */
     public function run(): void
     {
@@ -21,19 +24,14 @@ class GamePlayerSeeder extends Seeder
         $players = Player::all();
         $games = Game::all();
 
-        if ($players->count() < 2) {
+        if ($players->count() < self::REQUIRED_PLAYERS) {
             throw new \Exception('Not enough players to create matches.');
         }
 
         // Generate all possible unique pairs of players
         $playersPairs = $this->generateUniquePairs($players);
 
-        // Ensure we have exactly two players
-        if ($players->count() < 2) {
-            throw new Exception('Not enough players to create pairs.');
-        }
-
-        $selectedGames = $games->random(1000);
+        $selectedGames = $games->random(GameSeeder::RECORDS);
 
         // Randomly shuffle the pairs to assign them to games
         $playerPairs = $playersPairs->shuffle();

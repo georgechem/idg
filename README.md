@@ -25,6 +25,8 @@ For simplicity of that example used laravel ui
 To populate database with random data:
 >  php artisan db:seed --env=local
 
+>**Populating database takes some time due to significant number of records. Should not be longer than 1min.**
+
 
 **Notes:**
 

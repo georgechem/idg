@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
+    private const RECORDS = 500;
     /**
      * Run the database seeds.
      *
@@ -14,6 +15,6 @@ class UserSeeder extends Seeder
      */
     public function run():void
     {
-        User::factory(100)->create();
+        User::factory(self::RECORDS)->create();
     }
 }

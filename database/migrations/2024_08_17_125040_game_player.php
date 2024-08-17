@@ -17,6 +17,8 @@ class GamePlayer extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained()->onDelete('cascade');
             $table->foreignId('player_id')->constrained()->onDelete('cascade');
+            $table->unique(['game_id', 'player_id']);
+            $table->index(['game_id', 'player_id'], 'game_player_game_player_index');
         });
     }
 

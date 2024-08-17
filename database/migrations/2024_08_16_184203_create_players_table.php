@@ -24,6 +24,7 @@ class CreatePlayersTable extends Migration
             $table->string('phone');
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
+            $table->index(['user_id'], 'user_id_index');
         });
     }
 

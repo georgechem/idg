@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 
 class GameSeeder extends Seeder
 {
+    public const RECORDS = 1000;
     /**
      * Run the database seeds.
      *
@@ -14,6 +15,6 @@ class GameSeeder extends Seeder
      */
     public function run(): void
     {
-        Game::factory(1000)->create();
+        Game::factory(self::RECORDS)->create();
     }
 }

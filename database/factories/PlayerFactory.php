@@ -50,6 +50,7 @@ class PlayerFactory extends Factory
             'first_name' => $names[0] ?? 'No first Name',
             'last_name' => $names[1] ?? 'No last Name',
             'email' => $user->getEmail(),
+            'nickname' => $this->faker->name(),
         ]);
     }
 }

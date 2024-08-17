@@ -15,6 +15,8 @@ class Game extends Model
 
     protected $fillable = ['ended_at'];
 
+    protected $hidden = ['pivot'];
+
     public function getId(): int
     {
         return $this->attributes['id'];

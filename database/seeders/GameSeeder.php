@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 
 class GameSeeder extends Seeder
 {
-    public const RECORDS = 1000;
+    public const RECORDS = 2000;
     /**
      * Run the database seeds.
      *

@@ -14,14 +14,16 @@ class Score extends Model
         'score',
     ];
 
+    protected $hidden = ['game_id', 'player_id'];
+
     public $timestamps = false;
 
-    public function setScore(float  $score): void
+    public function setScore(int  $score): void
     {
         $this->attributes['score'] = $score;
     }
 
-    public function getScore(): float
+    public function getScore(): int
     {
         return $this->attributes['score'];
     }

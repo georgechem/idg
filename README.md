@@ -34,3 +34,7 @@ In simple scenario Player should be a User in the app however that approach is l
 - not every user of the app can/should be a player (in the future)
 - app may provide additional functionality then just playing
  - making user a player we may finish with extra fields in user which will be irrelevant for some of them  and if user is not a player we just store null there which is against database RDM and optimisation.
+
+Example response with Players, with their games, and relevant scores at given game.
+
+![img.png](img.png)

@@ -19,8 +19,9 @@ class CreateScoresTable extends Migration
             $table->foreign('game_id')->references('id')->on('games');
             $table->unsignedBigInteger('player_id');
             $table->foreign('player_id')->references('id')->on('players');
-            $table->float('score');
+            $table->integer('score');
             $table->index(['game_id', 'player_id'], 'game_id_player_id_index');
+            $table->unique(['game_id', 'player_id']);
         });
     }
 

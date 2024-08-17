@@ -19,7 +19,7 @@ class ScoreFactory extends Factory
         return [
             'game_id' => 1,
             'player_id' => 1,
-            'score' => $this->faker->randomFloat(1, 0, 1000),
+            'score' => $this->faker->numberBetween(0, 1000),
         ];
     }
 

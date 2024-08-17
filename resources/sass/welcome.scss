@@ -1,0 +1,23 @@
+.title {
+    margin: 2rem 1rem 0 1rem;
+}
+.tableContainer {
+    overflow-x: auto;
+    > table {
+        width: calc(100% - 2rem);
+        border-collapse: collapse;
+        margin: 2rem 1rem;
+        min-width: 600px;
+        th {
+            background-color: #f4f4f4;
+        }
+        th, td {
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        .row {
+            cursor: pointer;
+        }
+    }
+}

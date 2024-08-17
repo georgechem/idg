@@ -18,4 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', [PlayerController::class, 'index']);
+// if we make and api we will move that to api.php file
+Route::get('/players', [PlayerController::class, 'index']);

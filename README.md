@@ -35,6 +35,11 @@ In simple scenario Player should be a User in the app however that approach is l
 - app may provide additional functionality then just playing
  - making user a player we may finish with extra fields in user which will be irrelevant for some of them  and if user is not a player we just store null there which is against database RDM and optimisation.
 
+Used raw sql due to time limit and complexity of the query itself,
+Parameters are bind so there is no possibility of SQL injection. Also, repository method allow only integers to be passed and that is another layer of protection.
+Also if that will be user input we need provide proper validation of that data in controller but here it is not necessary.
+
+
 Example response with Players, with their games, and relevant scores at given game.
 
 ![img.png](img.png)

@@ -2,8 +2,6 @@
 
 namespace Database\Factories;
 
-use Carbon\Carbon;
-use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class GameFactory extends Factory

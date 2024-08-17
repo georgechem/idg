@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(class: UserSeeder::class);
         $this->call(class: PlayerSeeder::class);
         $this->call(class: GameSeeder::class);
+        $this->call(class: GamePlayerSeeder::class);
     }
 }

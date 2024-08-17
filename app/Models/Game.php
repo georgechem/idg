@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Game extends Model
 {
@@ -12,6 +13,11 @@ class Game extends Model
     public const TYPE = 'SCRABBLE';
 
     protected $fillable = ['ended_at'];
+
+    public function getId(): int
+    {
+        return $this->attributes['id'];
+    }
 
     public function setEndedAt(\DateTimeInterface $dateTime):void
     {
@@ -31,5 +37,10 @@ class Game extends Model
     public function getType(): string
     {
         return $this->attributes['type'];
+    }
+
+    public function players(): BelongsToMany
+    {
+        return $this->belongsToMany(Player::class, 'game_player', 'game_id', 'player_id');
     }
 }

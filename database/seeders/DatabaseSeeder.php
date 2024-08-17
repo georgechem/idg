@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Artisan;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,8 +12,13 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        Artisan::call('migrate:reset');
+        Artisan::call('migrate');
+
+        $this->call(class: UserSeeder::class);
+        $this->call(class: PlayerSeeder::class);
+        $this->call(class: GameSeeder::class);
     }
 }

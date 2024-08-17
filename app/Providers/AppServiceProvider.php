@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Dotenv\Dotenv;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,9 +12,14 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        if (file_exists(base_path('.env.local'))) {
+            $dotenv = Dotenv::createMutable(base_path(), '.env.local');
+        }else{
+            $dotenv = Dotenv::createMutable(base_path(), '.env');
+        }
+        $dotenv->load();
     }
 
     /**
@@ -21,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         //
     }

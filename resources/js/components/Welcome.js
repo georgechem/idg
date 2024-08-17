@@ -1,11 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import '../../sass/welcome.scss';
 import Row from './Row';
+import PlayerDetails from "./PlayerDetails";
 
 function Welcome() {
 
     const [topPlayers, setTopPlayers] = useState([]);
-
+    const [showMemberDetails, setShowMemberDetails] = useState(false);
+    const [currentPlayer, setCurrentPlayer] = useState(null);
     useEffect(()=>{
         fetch('/players', {
             method: "GET",
@@ -15,14 +17,15 @@ function Welcome() {
         }).then(res => res.json())
             .then(res => {
                 setTopPlayers(res);
-                console.log(res);
+
             }).catch(err => {
                 console.log(err);
         });
     }, []);
 
-    const onRowClick = () => {
-
+    const onRowClick = (player) => {
+        setShowMemberDetails(true)
+        setCurrentPlayer(player);
     }
 
     return (
@@ -40,13 +43,21 @@ function Welcome() {
                     <tbody>
                     {topPlayers.map((player, idx) =>
                         <Row
-                            onClick={onRowClick()}
+                            onClick={()=>onRowClick(player)}
                             key={'row_'+idx}
                             player={player}
                         />)}
                     </tbody>
                 </table>
             </div>
+
+            {showMemberDetails && currentPlayer ?
+                <PlayerDetails
+                    player={currentPlayer}
+                    setCurrentPlayer={setCurrentPlayer}
+                    setShowMemberDetails={setShowMemberDetails}
+                />
+                : null }
         </>
     );
 }

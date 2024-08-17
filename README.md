@@ -37,8 +37,10 @@ In simple scenario Player should be a User in the app however that approach is l
 
 Used raw sql due to time limit and complexity of the query itself,
 Parameters are bind so there is no possibility of SQL injection. Also, repository method allow only integers to be passed and that is another layer of protection.
-Also if that will be user input we need provide proper validation of that data in controller but here it is not necessary.
+Also, if that will be user input we need provide proper validation of that data in controller but here it is not necessary.
 
+For date displaying used input type=text for simplicity - normally we should use HTM5 element but time is currently supported only on Chrome. The best choice will be some date time picker library for react.
+Also for numeric input values used input type=text for simplicity
 
 Example response with Players, with their games, and relevant scores at given game.
 

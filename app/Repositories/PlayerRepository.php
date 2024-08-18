@@ -23,7 +23,8 @@ class PlayerRepository implements RepositoryInterface
         MAX(s.score) AS highest_score,
         MIN(s.score) AS lowest_score,
         SUM(CASE WHEN s.score > o.score THEN 1 ELSE 0 END) AS wins,
-        SUM(CASE WHEN s.score < o.score THEN 1 ELSE 0 END) AS losses
+        SUM(CASE WHEN s.score < o.score THEN 1 ELSE 0 END) AS losses,
+        SUM(CASE WHEN s.score = o.score THEN 1 ELSE 0 END) AS draws
     FROM
         players p
     JOIN
@@ -76,6 +77,7 @@ class PlayerRepository implements RepositoryInterface
     ps.lowest_score,
     ps.wins,
     ps.losses,
+    ps.draws,
     hs.opponent_id,
     hs.opponent_first_name,
     hs.opponent_last_name,
@@ -91,7 +93,6 @@ ORDER BY
     ps.average_score DESC
 LIMIT :limit;
 ";
-
         return DB::select($query, [
             'minGamesPlayed' => $havingAtLeastGames,
             'limit' => $top

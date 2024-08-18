@@ -8,6 +8,7 @@ function Welcome() {
     const [topPlayers, setTopPlayers] = useState([]);
     const [showMemberDetails, setShowMemberDetails] = useState(false);
     const [currentPlayer, setCurrentPlayer] = useState(null);
+
     useEffect(()=>{
         fetch('/players', {
             method: "GET",

@@ -20,29 +20,16 @@ class ScoreSeeder extends Seeder
     {
         $games = Game::all();
 
-        foreach ($games as $index => $game) {
-            if($index > self::RECORDS) {
-                break;
-            }
+        foreach ($games as $game){
+            $gamePlayers = DB::table('game_player')
+                ->select('*')
+                ->where('game_id', $game->getId())
+                ->get();
 
             for($j = 0; $j < self::PLAYERS; $j++) {
-                Score::factory()->forGame($game)->create();
+                Score::factory()->forGame($game, $gamePlayers[$j])->create();
             }
 
         }
-
-
-    }
-
-    private function getGame(): Game
-    {
-        do{
-            $game = Game::inRandomOrder()->first();
-            $exists = DB::table('scores')
-                ->where('game_id', $game->getId())
-                ->exists();
-        }while($exists);
-
-        return $game;
     }
 }
